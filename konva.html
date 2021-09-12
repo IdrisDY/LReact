@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/konva@8.1.3/konva.min.js"></script>
+    <title>Document Konva</title>
+</head>
+<body>
+    <div id="container"></div>
+    
+    <script> 
+    var stage = new Konva.Stage({
+        height:600,
+        width : 600,
+        container:"container",
+
+       
+    });
+
+    var layer = new Konva.Layer();
+    stage.add(layer)
+
+
+    let rect = new Konva.Rect({
+        x:100,
+        y:100,
+        width:200,
+        height:100,
+        fill:"blue",
+        stroke: "orange",
+        cornerRadius: 12,
+    draggable: "true"
+    });
+    layer.add(rect);
+
+
+
+    let circ = new Konva.Circle({
+        x:50,
+        y:100,
+        width:200,
+        height:100,
+        fill:"darkred",
+        stroke: "orange",
+        cornerRadius: 12,
+    draggable: "true"
+    });
+    layer.add(circ);
+
+
+    let text = new Konva.Text({
+        x:50,
+        y:100,
+        width:200,
+        height:100,
+        text: "Ade is a King",
+        draggable: "true",
+        fontSize: 24,
+    })
+        layer.add(text)
+
+        let line = new Konva.Line({
+        x:300,
+        y:400,
+        width:200,
+        height:50,
+      points: [ 0,0,200,0,100,-150],
+      closed:"true",
+        draggable: "true",
+        stroke: " black",
+        fill: "coral",
+        lineJoin:"round",
+        strokewidth:8
+    })
+
+    layer.add(line)
+    
+
+
+    // EVENTS
+    circ.on ("mouseover",
+    function(){
+        this.fill( "black");
+        this.stroke( " white")
+        
+    }
+    )
+
+    circ.on ("mouseout",
+    function(){
+        this.fill( "darkred");
+        this.stroke( " orange")
+    })
+
+line.on( " canvasclick",
+function(){
+   this.x(300),
+        this.y (400),
+       this. width(200),
+        this.height(50),
+      this.points[ 0,0,200,0,100,-150],
+        this.draggable("true"),
+        this.stroke(" black"),
+        this.fill("coral"),
+        this.lineJoin("round"),
+
+    layer.draw();
+})
+  </script>  
+</body>
+</html>
